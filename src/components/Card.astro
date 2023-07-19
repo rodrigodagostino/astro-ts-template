@@ -20,7 +20,7 @@ const { href, title, body } = Astro.props
   </a>
 </li>
 
-<style>
+<style lang="scss">
   .link-card {
     list-style: none;
     display: flex;
@@ -34,17 +34,26 @@ const { href, title, body } = Astro.props
     box-shadow:
       0 4px 6px -1px rgba(0, 0, 0, 0.1),
       0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  }
 
-  .link-card > a {
-    width: 100%;
-    text-decoration: none;
-    line-height: 1.4;
-    padding: 1rem 1.3rem;
-    border-radius: 0.35rem;
-    color: #111;
-    background-color: white;
-    opacity: 0.8;
+    &:is(:hover, :focus-within) {
+      background-position: 0;
+      background-image: var(--accent-gradient);
+
+      h2 {
+        color: rgb(var(--accent));
+      }
+    }
+
+    & > a {
+      width: 100%;
+      text-decoration: none;
+      line-height: 1.4;
+      padding: 1rem 1.3rem;
+      border-radius: 0.35rem;
+      color: #111;
+      background-color: white;
+      opacity: 0.8;
+    }
   }
 
   h2 {
@@ -57,14 +66,5 @@ const { href, title, body } = Astro.props
     margin-top: 0.5rem;
     margin-bottom: 0;
     color: #444;
-  }
-
-  .link-card:is(:hover, :focus-within) {
-    background-position: 0;
-    background-image: var(--accent-gradient);
-  }
-
-  .link-card:is(:hover, :focus-within) h2 {
-    color: rgb(var(--accent));
   }
 </style>
